@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <string>
 #include <iomanip>
 #include "mainMenu.h"
 #include "newStudent.h"
@@ -19,10 +20,11 @@ int main(){
 	cout << "Welcome to your grade book!" << endl;
 	cout << "Let's get started by entering some basic information." << endl;
 	cout << endl;
-	teacherFull = teacherInfo();
-	grade = gradeLevel();
-	cout << "This is now " << teacherFull << "'s Grade " << grade << " Book" << endl;
+	teacherInfo();
+	gradeLevel();
+	cout << "This is now " << teacherFullName << "'s Grade " << gradeLev << " Book" << endl;
 	cout << endl;
 	mainMenu();
+	cout << "Goodbye!";
 	return 0;
 }

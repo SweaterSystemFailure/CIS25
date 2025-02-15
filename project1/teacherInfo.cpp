@@ -2,12 +2,18 @@
 #include <string>
 #include <cstring>
 #include "teacherInfo.h"
+#include "globalVariables.h"
 
 using namespace std;
 
-string teacherInfo() {
+void teacherInfo() {
 	string honorific, teacherLast, teacherFull;
 	char choice;
+	
+	cout << "Welcome to your grade book!" << endl;
+	cout << "Let's get started by entering some basic information." << endl;
+	cout << endl;
+	
 	while (true) {
 		cout << "What honorific do your students address you by? [Ms., Mrs., Mr., Dr., etc] ";
 		getline(cin, honorific);
@@ -39,7 +45,7 @@ string teacherInfo() {
 		choice = tolower(choice);
 
 		if (choice == 'y') {
-			break;
+			teacherFullName = teacherFull;
 		}
 		else if (choice == 'n') {
 			cout << "That's okay. Let's try again." << endl;
@@ -49,6 +55,4 @@ string teacherInfo() {
 			cout << "Invalid input. Please enter y or n." << endl;
 		}
 	}
-
-	return teacherFull;
 }

@@ -65,8 +65,8 @@ void newStudent() {
 
 	while (true) {
 		cout << "Finally, what is this student's ID number? " << endl;
-		cin >> age;
-		if (cin.fail()) {
+		cin >> studentID;
+		if (cin.fail() || studentID < 0) {
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Invalid input. Please enter a valid ID number." << endl;
@@ -83,7 +83,7 @@ void newStudent() {
 	cout << setfill('*') << setw(50) << "*" << endl;
 	cout << setfill(' ') << setw(50) << " " << endl;
 	cout << setw(40) << left << "Student: " << fullName << endl;
-	cout << setw(40) << left << "Grade: " << grade << endl;
+	cout << setw(40) << left << "Grade: " << gradeLev << endl;
 	cout << setw(40) << left << "Age: " << age << endl;
 	cout << setw(40) << left << "Student ID: " << studentID << endl;
 	cout << setw(40) << left << "Seat: " << seat << endl;
