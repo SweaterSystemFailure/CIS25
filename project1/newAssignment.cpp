@@ -7,7 +7,7 @@ using namespace std;
 void newAssignment() {
 	char choice;
 
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < assignmentTotalSize; i++) {
 		string assignmentName;
 		unsigned pointsPossible;
 		while (true) {
@@ -20,7 +20,9 @@ void newAssignment() {
 				assignmentNames[i] = assignmentName;
 				break;
 			}
+			bool check = false;
 		}
+
 		while (true) {
 			cout << "How many points are possible on " << assignmentName << "?" << endl;
 			cin >> pointsPossible;
@@ -35,9 +37,9 @@ void newAssignment() {
 			}
 		}
 	}
-	//ideally, this check should occur after each time the top for loop executes and then break both loops if the user selects the 'no' option.
+	//ideally, there should be a similar check after each input.
 		while (true) {
-			for (int j = 0; j < 10; j++) {
+			for (int j = 0; j < assignmentTotalSize; j++) {
 				cout << "Assignment " << j + 1 << ", " << assignmentNames[j] << " is worth " << assignmentPointsPossible[j] << "." << endl;
 			}
 
