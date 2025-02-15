@@ -1,6 +1,7 @@
 #include <iostream>
 #include "newAssignment.h"
 #include "globalVariables.h"
+#include "mainMenu.h"
 
 using namespace std;
 
@@ -9,7 +10,7 @@ void newAssignment() {
 
 	for (int i = 0; i < assignmentTotalSize; i++) {
 		string assignmentName;
-		unsigned pointsPossible;
+		float pointsPossible;
 		while (true) {
 			cout << "What is assignment " << i + 1 << " called? " << endl;
 			getline(cin, assignmentName);
@@ -59,4 +60,5 @@ void newAssignment() {
 				cout << "Invalid input. Please enter Y or N." << endl;
 			}	
 	}
+		mainMenu();
 }

@@ -3,7 +3,6 @@
 #include <string>
 #include "newStudent.h"
 #include "mainMenu.h"
-#include "inputCheck.h"
 #include "globalVariables.h"
 
 using namespace std;
@@ -14,7 +13,7 @@ void newStudent() {
 	char choice;
 
 	cout << "Let's start by collecting some information about this student." << endl;
-	
+
 	while (true) {
 		cout << "What is this student's first name? ";
 		getline(cin, firstName);
@@ -35,7 +34,7 @@ void newStudent() {
 			break;
 		}
 	}
-	
+
 	fullName = firstName + " " + lastName;
 
 	while (true) {
@@ -53,7 +52,7 @@ void newStudent() {
 
 	//I went back and forth about defining seating position as an unsigned, but I know some teachers who used alphanumeric identifiers for their seating chart so a less percise string is warranted here.
 	while (true) {
-		cout << "What is this student's seating position? ";							
+		cout << "What is this student's seating position? ";
 		getline(cin, seat);
 		if (seat.empty()) {
 			cout << "Invalid input. Can't be empty. Try again: " << endl;
@@ -114,6 +113,6 @@ void newStudent() {
 		else {
 			cout << "Invalid input. Please enter Y or N." << endl;
 		}
-		
-		mainMenu();
+	}
+	mainMenu();
 }

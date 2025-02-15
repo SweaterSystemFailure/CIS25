@@ -4,7 +4,6 @@
 #include <iomanip>
 #include "mainMenu.h"
 #include "newStudent.h"
-#include "inputCheck.h"
 #include "teacherInfo.h"
 #include "gradeLevel.h"
 #include "newAssignment.h"

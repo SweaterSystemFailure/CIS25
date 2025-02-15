@@ -3,7 +3,6 @@
 #include <string>
 #include "mainMenu.h"
 #include "newStudent.h"
-#include "inputCheck.h"
 #include "newAssignment.h"
 #include "enterGrade.h"
 #include "studentReport.h"
