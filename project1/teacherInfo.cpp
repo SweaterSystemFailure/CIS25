@@ -14,7 +14,7 @@ void teacherInfo() {
 	cout << endl;
 	
 	while (true) {
-		cout << "What honorific do your students address you by? [Ms., Mrs., Mr., Dr., etc] ";
+		cout << "Which honorific do your students address you by? [Ms., Mrs., Mr., Dr., etc] ";
 		getline(cin, honorific);
 		if (honorific.empty()) {
 			cout << "Invalid input. Can't be empty. Try again: " << endl;
@@ -39,16 +39,19 @@ void teacherInfo() {
 	cout << "Hi " << teacherFull << "!" << endl;
 	
 	while (true) {
-		cout << "Does this look right to you? " << endl;
+		cout << "Does this look right to you?[Y/N] " << endl;
 		cin >> choice;
 		choice = tolower(choice);
 
 		if (choice == 'y') {
 			teacherFullName = teacherFull;
+			cout << "Great. Let's continue." << endl;
+			break;
 		}
 		else if (choice == 'n') {
 			cout << "That's okay. Let's try again." << endl;
 			teacherInfo();
+			break;
 		}
 		else {
 			cout << "Invalid input. Please enter y or n." << endl;

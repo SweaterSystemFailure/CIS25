@@ -22,12 +22,15 @@ void gradeLevel() {
 		}
 	}
 	while (true) {
-		cout << "Does this look right to you? " << endl;
+		cout << "Does this look right to you?[Y/N] " << endl;
 		cin >> choice;
 		choice = tolower(choice);
 
 		if (choice == 'y') {
 			gradeLev = grade;
+			cout << "This is now " << teacherFullName << "'s Grade " << gradeLev << " Book" << endl;
+			cout << endl;
+			break;
 		}
 		else if (choice == 'n') {
 			cout << "That's okay. Let's try again." << endl;
