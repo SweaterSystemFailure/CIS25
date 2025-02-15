@@ -3,22 +3,21 @@
 using namespace std;
 
 int gradeLevel() {
-	int grade;
-	bool isInputValid;
-
-	cout << "Which grade do you teach? [1-12] ";					//Needs a solution for kindergarten.
+	unsigned grade;
+	
 	cin >> grade;
-
-	isInputValid =
-		(grade <= 1 || grade >= 12) ? false :
-		true;
-
-	if (isInputValid) {
-		return grade;
+	while (true) {
+		cout << "Which grade do you teach? [1-12] " << endl;					//Needs solutions for K & pre-K.
+		cin >> grade;
+		if (cin.fail() || grade <= 1 || grade >= 12) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Invalid input. Please enter a grade between 1 & 12." << endl;
+		}
+		else {
+			break;
+		}
 	}
-	else {
-		cout << "Please enter a valid grade." << endl;
-		cout << endl;
 		return gradeLevel();
 	}
 }
