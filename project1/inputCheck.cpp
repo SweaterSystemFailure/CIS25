@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool inputCheck() {
+ string inputCheck() {
 	char inputCheck;
 	string result;
 	bool isInputValid;

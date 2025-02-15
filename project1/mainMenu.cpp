@@ -4,9 +4,12 @@
 #include "mainMenu.h"
 #include "newStudent.h"
 #include "inputCheck.h"
+#include "newAssignment.h"
+#include "enterGrade.h"
+#include "studentReport.h"
 using namespace std;
 
-void mainMenu(string studentInfo[], const short size) {
+void mainMenu() {
 	char menuOption;
 
 	cout << "Welcome to the main menu." << endl;

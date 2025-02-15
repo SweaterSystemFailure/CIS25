@@ -1,5 +1,6 @@
 #include <iostream>
 #include "gradeLevel.h"
+#include "globalVariables.h"
 using namespace std;
 
 int gradeLevel() {
