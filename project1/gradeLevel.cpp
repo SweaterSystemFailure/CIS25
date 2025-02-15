@@ -3,8 +3,9 @@
 #include "globalVariables.h"
 using namespace std;
 
-int gradeLevel() {
+void gradeLevel() {
 	unsigned grade;
+	char choice;
 	
 	cin >> grade;
 	while (true) {
@@ -19,6 +20,20 @@ int gradeLevel() {
 			break;
 		}
 	}
-		return gradeLevel();
+	while (true) {
+		cout << "Does this look right to you? " << endl;
+		cin >> choice;
+		choice = tolower(choice);
+
+		if (choice == 'y') {
+			gradeLev = grade;
+		}
+		else if (choice == 'n') {
+			cout << "That's okay. Let's try again." << endl;
+			gradeLevel();
+		}
+		else {
+			cout << "Invalid input. Please enter y or n." << endl;
+		}
 	}
 }
