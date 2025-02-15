@@ -7,7 +7,7 @@
 using namespace std;
 
 void enterGrade() {
-	unsigned pointsEarned;
+	float pointsEarned;
 	char choice;
 
 	if (assignmentNames[0] == "undefined") {												//In version 2, this check needs to be more refined. Ideally, it should test whether the storage array or object exists at all.

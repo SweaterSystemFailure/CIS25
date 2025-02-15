@@ -31,8 +31,9 @@ void mainMenu() {
 			break;
 		}
 		else {
-			cout << "Invalid input. Please enter a valid number." << endl;
+			cout << "Invalid input. Please enter a valid option and try again." << endl;
 		}
+	}
 
 	switch (menuOption) {
 	case '1':
@@ -55,3 +56,4 @@ void mainMenu() {
 		break;
 	}
 }
+

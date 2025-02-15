@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <cstring>
 #include "teacherInfo.h"
 #include "globalVariables.h"
 

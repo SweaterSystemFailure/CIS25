@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "newAssignment.h"
 #include "globalVariables.h"
 #include "mainMenu.h"
@@ -27,7 +28,7 @@ void newAssignment() {
 		while (true) {
 			cout << "How many points are possible on " << assignmentName << "?" << endl;
 			cin >> pointsPossible;
-			if (cin.fail() || pointsPossible < 0 || pointsPossible > 1000) {
+			if (cin.fail() || pointsPossible < 1 || pointsPossible > 1000) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				cout << "Invalid input. Please enter a valid number of points." << endl;

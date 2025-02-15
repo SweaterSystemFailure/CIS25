@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "gradeLevel.h"
 #include "globalVariables.h"
 using namespace std;

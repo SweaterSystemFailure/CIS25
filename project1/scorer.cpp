@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <numeric>						//credit to StackOverflow for making me aware of this library. It is necessary to sum the array of floats on line 12.
 #include "scorer.h"
 #include "globalVariables.h"

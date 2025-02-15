@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <string>
 #include "studentReport.h"
 #include "globalVariables.h"
 #include "scorer.h"
@@ -8,7 +9,7 @@
 using namespace std;
 
 void studentReport() {
-	if (studentInfo[0] == "undefined" || assignmentNames[0] == "undefined" || assignmentPointsPossible[0] == 0) {
+	if (studentInfo[0] == "Undefined" || assignmentNames[0] == "Undefined" || assignmentPointsPossible[0] == 0) {
 		cout << "Please be sure to populate student information and assignment information before generating a student report." << endl;
 		mainMenu();
 	}
