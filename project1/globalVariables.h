@@ -5,7 +5,7 @@ using namespace std;
 // This is a bad way to store and share this information between fucntions. The next version of this project will replace this solution with a more robust class/objects system.
 // credit to StackOverflow for teaching me about extern. 
 
-extern unsigned int studentInfoSize;
+extern unsigned int studentInfoSize;						//this is a dummy value for the total number of student bio objects;
 extern string studentInfo[6];								//stores student biographical info. 6 items tied to index location.
 extern unsigned int assignmentTotalSize;					//this is a dummy value for the total number of assignments. In the next version, this should be dynamic.
 extern string assignmentNames[10];							//this array holds the assignment names.

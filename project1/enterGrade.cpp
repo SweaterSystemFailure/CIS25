@@ -6,6 +6,8 @@
 
 using namespace std;
 
+//I don't love this for the same reason as the newAssignment function. 
+//Should be more menu driven and allow users to input in a nonlinear way.
 void enterGrade() {
 	float pointsEarned;
 	char choice;
@@ -19,16 +21,16 @@ void enterGrade() {
 	}
 
 	else {
-		for (int i = 0; i < assignmentTotalSize; i++) {
-			pointsEarned = 0;
-			while (true) {
+		for (int i = 0; i < assignmentTotalSize; i++) {										//outer loop set to number of assigments
+			pointsEarned = 0;																//resets entry variable on each loop
+			while (true) {																	//recaps assignment number, name, and points possible, then collects points earned.
 				cout << "Assignment " << i+1 << ": " << assignmentNames[i] << "." << endl;
 				cout << assignmentPointsPossible[i] << " points are possible on this assignment." << endl;
 				cout << "How many points did this student earn? " << endl;
 				cin >> pointsEarned;
 				cout << endl;
 
-				if (cin.fail() || pointsEarned <= 0) {
+				if (cin.fail() || pointsEarned <= 0) {												//input validation
 					cin.clear();
 					cin.ignore(numeric_limits<streamsize>::max(), '\n');
 					cout << "Invalid input. Please enter a valid score." << endl;
@@ -45,24 +47,24 @@ void enterGrade() {
 	}
 
 	while (true) {
-		for (int j = 0; j < assignmentTotalSize; j++) {
-			cout << "Student "<< studentInfo[0]<<  " scored " << assignmentPointsScored[j] << "out of " << assignmentPointsPossible[j] << " on assignment " << j + 1 << ", " << assignmentNames[j] << "." << endl;
+		for (int j = 0; j < assignmentTotalSize; j++) {												//prints user input for validation
+			cout << "Student "<< studentInfo[0]<<  " scored " << assignmentPointsScored[j] << " out of " << assignmentPointsPossible[j] << " on assignment " << j + 1 << ", " << assignmentNames[j] << "." << endl;
 		}
 
-		cout << "Does this look right to you?[Y/N] " << endl;
+		cout << "Does this look right to you?[Y/N] " << endl;										//validation check
 		cin >> choice;
 		cin.ignore();
 		choice = tolower(choice);
 
-		if (choice == 'y') {
+		if (choice == 'y') {																		//information is already stored so agreement returns.
 			cout << "Great. Let's go back to the main menu." << endl;
 			break;
 		}
-		else if (choice == 'n') {
+		else if (choice == 'n') {																	//disagreement allows redo
 			cout << "That's okay. Let's try again." << endl;
 			return enterGrade();
 		}
-		else {
+		else {																						//default invalid state
 			cout << "Invalid input. Please enter Y or N." << endl;
 		}
 	}

@@ -9,12 +9,15 @@ using namespace std;
 float scorer(){
 	float score = 0;
 	
+	//creates decimal score of all assignments
 	for (int j = 0; j < assignmentTotalSize; j++) {
 		score += (assignmentPointsScored[j] / assignmentPointsPossible[j]);
 	}
-	
-	score = score / assignmentTotalSize;
 
+	//sets score to a number that is easy to interpret
+	score * 100;
+
+	//checks score for a grade
 	if (score >= 90 && score <= 100) {
 		letterGrade = 'A';
 	}

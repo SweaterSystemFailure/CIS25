@@ -15,6 +15,7 @@ void newStudent() {
 	cout << "Let's start by collecting some information about this student." << endl;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
+	//collects student first name
 	while (true) {
 		cout << "What is this student's first name? ";
 		getline(cin, firstName);
@@ -28,6 +29,7 @@ void newStudent() {
 
 	cout << endl;
 
+	//collects student last name
 	while (true) {
 		cout << "What is this student's last name? ";
 		getline(cin, lastName);
@@ -39,9 +41,11 @@ void newStudent() {
 		}
 	}
 
+	//combines student name for storage later
 	cout << endl;
 	fullName = firstName + " " + lastName;
 
+	//collects age
 	while (true) {
 		cout << "How old is this student?[4-18] " << endl;
 		cin >> age;
@@ -58,7 +62,7 @@ void newStudent() {
 
 	cout << endl;
 
-	//I went back and forth about defining seating position as an unsigned, but I know some teachers who used alphanumeric identifiers for their seating chart so a less percise string is warranted here.
+	//collects seat info. alphanumeric for teacher who use a grid layout (eg: 14c)
 	while (true) {
 		cout << "What is this student's seating position? ";
 		getline(cin, seat);
@@ -72,6 +76,7 @@ void newStudent() {
 
 	cout << endl;
 
+	//collects ID number
 	while (true) {
 		cout << "Finally, what is this student's ID number? " << endl;
 		cin >> studentID;
@@ -85,9 +90,9 @@ void newStudent() {
 		}
 	}
 
+	//prints student biographicals for user validation
 	cout << endl;
 	cout << endl;
-
 	cout << setfill('*') << setw(50) << "*" << endl;
 	cout << setfill('*') << setw(50) << "*" << endl;
 	cout << setfill(' ') << setw(50) << " " << endl;
@@ -101,12 +106,13 @@ void newStudent() {
 	cout << setfill('*') << setw(50) << "*" << endl;
 	cout << endl;
 
+	//user validation
 	while (true) {
 		cout << "Does this look right to you?[Y/N] " << endl;
 		cin >> choice;
 		choice = tolower(choice);
 
-		if (choice == 'y') {
+		if (choice == 'y') {											//user agreement stores biographicals to array
 			actualAge = to_string(age);
 			actualSID = to_string(studentID);
 			studentInfo[0] = fullName;
@@ -119,15 +125,15 @@ void newStudent() {
 			cout << endl;
 			break;
 		}
-		else if (choice == 'n') {
+		else if (choice == 'n') {										//user disagreement allows a redo off all info. Ideally, this should be more precise.
 			cout << "That's okay. Let's try again." << endl;
 			cout << endl;
 			return newStudent();
 		}
-		else {
+		else {															//check for invalid input
 			cout << "Invalid input. Please enter Y or N." << endl;
 			cout << endl;
 		}
 	}
-	mainMenu();
+	mainMenu();															//routes back to main
 }

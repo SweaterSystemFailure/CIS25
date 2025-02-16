@@ -9,6 +9,7 @@ void teacherInfo() {
 	string honorific, teacherLast, teacherFull;
 	char choice;
 	
+	//collects honorific
 	while (true) {
 		cout << "Which honorific do your students address you by? [Ms., Mrs., Mr., Dr., etc] ";
 		getline(cin, honorific);
@@ -20,6 +21,7 @@ void teacherInfo() {
 		}
 	}
 
+	//collects last name
 	while (true) {
 		cout << "What is your last name? ";
 		getline(cin, teacherLast);
@@ -31,9 +33,11 @@ void teacherInfo() {
 		}
 	}
 
+	//output for user validation
 	teacherFull = honorific + " " + teacherLast;
 	cout << "Hi " << teacherFull << "!" << endl;
 	
+	//user validation check
 	while (true) {
 		cout << "Does this look right to you?[Y/N] " << endl;
 		cin >> choice;
@@ -41,18 +45,18 @@ void teacherInfo() {
 		cin.ignore();
 
 		if (choice == 'y') {
-			teacherFullName = teacherFull;
+			teacherFullName = teacherFull;							//user agreement stores to global variable
 			cout << "Great. Let's continue." << endl;
 			cout << endl;
 			break;
 		}
-		else if (choice == 'n') {
+		else if (choice == 'n') {									//user disagreement allows them to try again
 			cout << "That's okay. Let's try again." << endl;
 			cout << endl;
 			return teacherInfo();
 			break;
 		}
-		else {
+		else {														//invalid input statement
 			cout << "Invalid input. Please enter y or n." << endl;
 			cout << endl;
 		}
