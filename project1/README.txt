@@ -10,3 +10,4 @@ It should work on your local IDE.
 
 This program operates under the MIT open source license.
 It's author can be reached at Benjamin.S.Fagan@gmail.com.
+A review of code and functionality can be found on YouTube at: https://youtu.be/xy97XPJE4qs
