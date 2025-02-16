@@ -8,11 +8,12 @@
 using namespace std;
 
 void newStudent() {
-	string firstName, lastName, fullName, seat;
+	string firstName, lastName, fullName, seat, actualAge, actualSID;
 	unsigned age, studentID;
 	char choice;
 
 	cout << "Let's start by collecting some information about this student." << endl;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 	while (true) {
 		cout << "What is this student's first name? ";
@@ -24,6 +25,9 @@ void newStudent() {
 			break;
 		}
 	}
+
+	cout << endl;
+
 	while (true) {
 		cout << "What is this student's last name? ";
 		getline(cin, lastName);
@@ -35,11 +39,13 @@ void newStudent() {
 		}
 	}
 
+	cout << endl;
 	fullName = firstName + " " + lastName;
 
 	while (true) {
 		cout << "How old is this student?[4-18] " << endl;
 		cin >> age;
+		cin.ignore();
 		if (cin.fail() || age < 4 || age > 18) {
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -49,6 +55,8 @@ void newStudent() {
 			break;
 		}
 	}
+
+	cout << endl;
 
 	//I went back and forth about defining seating position as an unsigned, but I know some teachers who used alphanumeric identifiers for their seating chart so a less percise string is warranted here.
 	while (true) {
@@ -62,10 +70,12 @@ void newStudent() {
 		}
 	}
 
+	cout << endl;
+
 	while (true) {
 		cout << "Finally, what is this student's ID number? " << endl;
 		cin >> studentID;
-		if (cin.fail() || studentID < 0) {
+		if (cin.fail()) {
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Invalid input. Please enter a valid ID number." << endl;
@@ -97,21 +107,26 @@ void newStudent() {
 		choice = tolower(choice);
 
 		if (choice == 'y') {
-			cout << "Great. Let's go back to the main menu." << endl;
+			actualAge = to_string(age);
+			actualSID = to_string(studentID);
 			studentInfo[0] = fullName;
-			studentInfo[1] = studentID;
+			studentInfo[1] = actualSID;
 			studentInfo[2] = seat;
-			studentInfo[3] = age;
+			studentInfo[3] = actualAge;
 			studentInfo[4] = firstName;
 			studentInfo[5] = lastName;
+			cout << "Great. Let's go back to the main menu." << endl;
+			cout << endl;
 			break;
 		}
 		else if (choice == 'n') {
 			cout << "That's okay. Let's try again." << endl;
-			newStudent();
+			cout << endl;
+			return newStudent();
 		}
 		else {
 			cout << "Invalid input. Please enter Y or N." << endl;
+			cout << endl;
 		}
 	}
 	mainMenu();

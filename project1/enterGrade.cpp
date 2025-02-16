@@ -46,6 +46,7 @@ void enterGrade() {
 		cout << "Does this look right to you?[Y/N] " << endl;
 		cin >> choice;
 		choice = tolower(choice);
+		cin.ignore();
 
 		if (choice == 'y') {
 			cout << "Great. Let's go back to the main menu." << endl;
@@ -53,7 +54,7 @@ void enterGrade() {
 		}
 		else if (choice == 'n') {
 			cout << "That's okay. Let's try again." << endl;
-			enterGrade();
+			return enterGrade();
 		}
 		else {
 			cout << "Invalid input. Please enter Y or N." << endl;

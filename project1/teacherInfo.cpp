@@ -9,10 +9,6 @@ void teacherInfo() {
 	string honorific, teacherLast, teacherFull;
 	char choice;
 	
-	cout << "Welcome to your grade book!" << endl;
-	cout << "Let's get started by entering some basic information." << endl;
-	cout << endl;
-	
 	while (true) {
 		cout << "Which honorific do your students address you by? [Ms., Mrs., Mr., Dr., etc] ";
 		getline(cin, honorific);
@@ -42,19 +38,24 @@ void teacherInfo() {
 		cout << "Does this look right to you?[Y/N] " << endl;
 		cin >> choice;
 		choice = tolower(choice);
+		cin.ignore();
 
 		if (choice == 'y') {
 			teacherFullName = teacherFull;
 			cout << "Great. Let's continue." << endl;
+			cout << endl;
 			break;
 		}
 		else if (choice == 'n') {
 			cout << "That's okay. Let's try again." << endl;
-			teacherInfo();
+			cout << endl;
+			return teacherInfo();
 			break;
 		}
 		else {
 			cout << "Invalid input. Please enter y or n." << endl;
+			cout << endl;
 		}
 	}
+	return;
 }

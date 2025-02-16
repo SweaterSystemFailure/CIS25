@@ -8,10 +8,12 @@ using namespace std;
 
 void newAssignment() {
 	char choice;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 	for (int i = 0; i < assignmentTotalSize; i++) {
 		string assignmentName;
 		float pointsPossible;
+
 		while (true) {
 			cout << "What is assignment " << i + 1 << " called? " << endl;
 			getline(cin, assignmentName);
@@ -22,24 +24,26 @@ void newAssignment() {
 				assignmentNames[i] = assignmentName;
 				break;
 			}
-			bool check = false;
 		}
-
 		while (true) {
-			cout << "How many points are possible on " << assignmentName << "?" << endl;
-			cin >> pointsPossible;
-			if (cin.fail() || pointsPossible < 1 || pointsPossible > 1000) {
+			cout << "How many points are possible on " << assignmentName << "?[1 - 1000] " << endl;
+			if (!(cin >> pointsPossible)) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				cout << "Invalid input. Please enter a valid number of points." << endl;
 			}
+			else if (pointsPossible < 1 || pointsPossible > 1000) {
+				cout << "Invalid input. Please enter a valid number of points." << endl;
+			}
 			else {
 				assignmentPointsPossible[i] = pointsPossible;
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				break;
 			}
 		}
 	}
-	//ideally, there should be a similar check after each input.
+
+		//ideally, there should be a similar check after each input.
 		while (true) {
 			for (int j = 0; j < assignmentTotalSize; j++) {
 				cout << "Assignment " << j + 1 << ", " << assignmentNames[j] << " is worth " << assignmentPointsPossible[j] << "." << endl;
@@ -48,6 +52,7 @@ void newAssignment() {
 			cout << "Does this look right to you?[Y/N] " << endl;
 			cin >> choice;
 			choice = tolower(choice);
+			cin.ignore();
 
 			if (choice == 'y') {
 				cout << "Great. Let's go back to the main menu." << endl;
@@ -59,7 +64,8 @@ void newAssignment() {
 			}
 			else {
 				cout << "Invalid input. Please enter Y or N." << endl;
-			}	
-	}
+			}
+		}
 		mainMenu();
-}
+	}
+		

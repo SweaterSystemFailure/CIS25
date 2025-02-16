@@ -8,11 +8,10 @@ void gradeLevel() {
 	unsigned grade;
 	char choice;
 	
-	cin >> grade;
 	while (true) {
 		cout << "Which grade do you teach? [1-12] " << endl;					//Needs solutions for K & pre-K.
 		cin >> grade;
-		if (cin.fail() || grade <= 1 || grade >= 12) {
+		if (cin.fail() || grade < 1 || grade > 12) {
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Invalid input. Please enter a grade between 1 & 12." << endl;
@@ -21,23 +20,29 @@ void gradeLevel() {
 			break;
 		}
 	}
+
+	cout << "You teach grade " << grade << "." << endl;
+
 	while (true) {
 		cout << "Does this look right to you?[Y/N] " << endl;
 		cin >> choice;
 		choice = tolower(choice);
+		cin.ignore();
 
 		if (choice == 'y') {
 			gradeLev = grade;
+			cout << endl;
 			cout << "This is now " << teacherFullName << "'s Grade " << gradeLev << " Book" << endl;
 			cout << endl;
 			break;
 		}
 		else if (choice == 'n') {
 			cout << "That's okay. Let's try again." << endl;
-			gradeLevel();
+			return gradeLevel();
 		}
 		else {
 			cout << "Invalid input. Please enter y or n." << endl;
 		}
 	}
+	return;
 }
