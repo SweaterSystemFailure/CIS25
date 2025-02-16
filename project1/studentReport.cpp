@@ -29,7 +29,8 @@ void studentReport() {
 		cout << endl;
 
 		for (int i = 0; i < assignmentTotalSize; i++) {
-			cout << "Assignment " << i + 1 << ", " << assignmentNames[i] << ": " << assignmentPointsScored[i] << "out of " << assignmentPointsPossible[i] << "." << endl;
+			cout << "Assignment " << i + 1 << ", " << assignmentNames[i] << ": " << setprecision(2)<<  assignmentPointsScored[i] << "out of " << setprecision(2) 
+			<< assignmentPointsPossible[i] << "." << endl;
 		}
 
 		cout << endl;
