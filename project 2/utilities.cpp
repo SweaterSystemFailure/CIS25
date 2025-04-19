@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "utilities.h"
 #include "containerFunctions.h"
 #include "menuFunctions.h"
@@ -66,8 +67,50 @@ bool userCheck() {
 		else {														//invalid input statement
 			cout << "Invalid input. Please enter y or n." << endl;
 			cout << endl;
-			check = false;
-			return check;
+		}
+	}
+}
+
+char charValidator(const string& prompt, const vector<char>& validOptions) {
+	char input;
+	while (true) {
+		cout << prompt << endl;
+		cin >> input;
+		input = tolower(input);
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		for (char option : validOptions) {
+			if (tolower(option) == input) {
+				return input;
+			}
+		}
+
+		cout << "Invalid input. Please enter one of the following: ";
+		for (char option : validOptions) {
+			cout << option << " ";
+		}
+		cout << endl;
+	}
+}
+
+float floatValidator(const string& prompt, float min, float max) {
+	float number;
+	while (true) {
+		cout << prompt << endl;
+		cin >> number;
+
+		if (cin.fail()) {
+			cout << "Please enter a valid number." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+		else if (number < min || number > max) {
+			cout << "Number must be between " << min << " and " << max << "." << endl;
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+		else {
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			return number;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "menuFunctions.h"
 #include "containerFunctions.h"
 #include "utilities.h"

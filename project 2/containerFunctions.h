@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 namespace gradebook {
 
@@ -15,7 +16,6 @@ namespace gradebook {
 	struct student {
 		string firstName;
 		string lastName;
-		string fullName = firstName + " " + lastName;
 		string pronouns;
 		unsigned age;
 		unsigned id;
@@ -23,12 +23,14 @@ namespace gradebook {
 		char overallGrade;
 		float gradePercent;
 		string notes;
+
+		static void addStudent(std::vector<student>& students);
+		static void printStudent(student& newStudent);
 	};
 
 	struct assignment {
 		string name;
 		float pointsPossible;
-
 	};
 
 	struct assignmentCategory {
@@ -38,4 +40,8 @@ namespace gradebook {
 		assignment assignment;
 	};
 
+	struct globalStorage {
+		std::vector<gradebook::student> students;
+		classroom currentClass;
+	};
 }
