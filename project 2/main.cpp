@@ -8,8 +8,8 @@ using namespace std;
 using namespace gradebook;
 
 int main(){
-welcome();
-mainMenu();
+welcome(globalStorage&);
+mainMenu(globalStorage&);
 
 return 0;
 }

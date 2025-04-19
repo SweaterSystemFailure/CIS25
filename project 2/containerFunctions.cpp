@@ -38,7 +38,7 @@ void addStudent(globalStorage& storage) {
 		newStudent.overallGrade = charValidator("Please enter the student's overall grade (A, B, C, D, or F): ", { 'A', 'B', 'C', 'D', 'F' });
 		newStudent.gradePercent = floatValidator("Enter the student's grade percentage: ", 0.0f, 100.0f);
 		newStudent.notes = stringValidator("Enter any additional notes for this student: ");
-		printStudent(newStudent)
+		printStudent(newStudent);
 	} while (!userCheck());
 
 	storage.students.push_back(newStudent);

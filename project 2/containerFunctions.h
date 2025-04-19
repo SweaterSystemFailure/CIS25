@@ -5,36 +5,40 @@
 namespace gradebook {
 
 	struct classroom {
-		string title;
-		string firstName;
-		string lastName;
+		std::string title;
+		std::string firstName;
+		std::string lastName;
 		unsigned gradeLevel;
 
 		static classroom createClassroom();
 	};
 
 	struct student {
-		string firstName;
-		string lastName;
-		string pronouns;
+		std::string firstName;
+		std::string lastName;
+		std::string pronouns;
 		unsigned age;
 		unsigned id;
-		string seat;
+		std::string seat;
 		char overallGrade;
 		float gradePercent;
-		string notes;
+		std::string notes;
+	};
 
-		static void addStudent(std::vector<student>& students);
-		static void printStudent(student& newStudent);
+	struct studentScore {
+		float pointsEarned;
+		float numericalScore;
+		char letterGrade;
 	};
 
 	struct assignment {
-		string name;
+		std::string name;
 		float pointsPossible;
+		studentScore studentScore;
 	};
 
 	struct assignmentCategory {
-		string name;
+		std::string name;
 		unsigned numberOfAssignments;
 		float weightMultiplier;
 		assignment assignment;
@@ -44,4 +48,7 @@ namespace gradebook {
 		std::vector<gradebook::student> students;
 		classroom currentClass;
 	};
+
+	void addStudent(globalStorage& storage);
+	void printStudent(student& newStudent);
 }

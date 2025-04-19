@@ -8,26 +8,26 @@
 using namespace std;
 using namespace gradebook;
 
-void welcome() {
+void welcome(globalStorage& storage) {
 	cout << "Welcome to your grade book!" << endl;
 	cout << "Would you like to: " << endl;
 	cout << "1. Create a new classroom." << endl;
 	cout << "2. Load an existing classroom?" << endl;
 
 	switch (unsignedValidator("Please enter the number of the option that you would like to select: [1-2]", 1, 2)) {
-	case 1: 
-		classroom myNewClass = classroom::createClassroom();
+	case 1:
+		storage.currentClass = classroom::createClassroom();
 		break;
 	case 2:
-		//import file function
+		// import file function
 		break;
 	default:
 		cout << "It looks like something went wrong. Let's try again." << endl;
-		welcome();
+		welcome(storage);
 	}
 }
 
-void mainMenu() {
+void mainMenu(globalStorage& globalStorage) {
 	//menu options
 	cout << "Welcome to the main menu." << endl;
 	cout << "From here you can enter student information and grades." << endl;
@@ -43,7 +43,7 @@ void mainMenu() {
 	//selector for menu options
 	switch (unsignedValidator("Please enter the number of the option that you would like to select: [1-5] ", 1, 5)) {
 	case 1:
-		newStudent();
+		addStudent(globalStorage&);
 		break;
 	case 2:
 		newAssignment();

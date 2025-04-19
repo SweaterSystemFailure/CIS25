@@ -3,7 +3,7 @@
 #include <vector>
 
 namespace gradebook {
-	void welcome();
-	void mainMenu();
+	void welcome(globalStorage&);
+	void mainMenu(globalStorage&);
 
 }

@@ -5,10 +5,11 @@
 
 namespace gradebook {
 
-	unsigned unsignedValidator(const string& prompt, unsigned min, unsigned max);
-	std::string stringValidator(const string& prompt);
+	unsigned unsignedValidator(const std::string& prompt, unsigned min, unsigned max);
+	std::string stringValidator(const std::string& prompt);
 	bool userCheck();
-	char charValidator(const string& prompt, const vector<char>& validOptions);
-	float floatValidator(const string& prompt, float min, float max)
+	char charValidator(const std::string& prompt, const std::vector<char>& validOptions);
+	float floatValidator(const std::string& prompt, float min, float max);
+	float scorer();
 
 }
