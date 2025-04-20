@@ -1,9 +1,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include "utilities.h"
 #include "containerFunctions.h"
 #include "menuFunctions.h"
+#include "containers.h"
+
 
 using namespace std;
 using namespace gradebook;
@@ -44,27 +47,27 @@ string stringValidator(const string& prompt) {
 	}
 }
 
-bool userCheck() {
+bool userCheck(const string& prompt, const string& yesPrompt, const string& noPrompt) {
 	char choice;
 	bool check = true;
 	while (!check) {
-		cout << "Does this look right to you?[Y/N] " << endl;
+		cout << prompt << endl;
 		cin >> choice;
 		choice = tolower(choice);
 		cin.ignore();
 
-		if (choice == 'y') {
-			cout << "Great. Let's continue." << endl;
+		if (choice == 'y') {										//user agreement sets bool to false for external logic check
+			cout << yesPrompt << endl;
 			cout << endl;
 			return check;
 		}
-		else if (choice == 'n') {									//user disagreement allows them to try again
-			cout << "That's okay. Let's try again." << endl;
+		else if (choice == 'n') {									//user disagreement sets bool to false for external logic check
+			cout << noPrompt<< endl;
 			cout << endl;
 			check = false;
 			return check;
 		}
-		else {														//invalid input statement
+		else {														//invalid input statement runs the loop again
 			cout << "Invalid input. Please enter y or n." << endl;
 			cout << endl;
 		}
@@ -115,32 +118,37 @@ float floatValidator(const string& prompt, float min, float max) {
 	}
 }
 
-float scorer() {
-	char letterGrade;
+void scorer(globalStorage& storage, const vector<assignment>& assignments) {
+	for (auto& s : storage.students) {
+		float totalPointsPossible = 0.0f;
+		float totalPointsScored = 0.0f;
 
-	//creates decimal score of all assignments
-	for (int j = 0; j < assignmentTotalSize; j++) {
-		score += (assignmentPointsScored[j] / assignmentPointsPossible[j]);
-	}
+		//Points possible and scored calculators
+		for (const auto& assign : assignments) {
+			totalPointsPossible += assign.pointsPossible;
+			totalPointsScored += assign.pointsPossible; 
+		}
 
-	//sets score to a number that is easy to interpret
-	score * 100;
+		//Percentage calculator
+		if (totalPointsPossible > 0) {
+			s.gradePercent = (totalPointsScored / totalPointsPossible) * 100.0f;
+		}
 
-	//checks score for a grade
-	if (score >= 90 && score <= 100) {
-		letterGrade = 'A';
+		//Letter grade calculator
+		if (s.gradePercent >= 90.0f) {
+			s.overallGrade = 'A';
+		}
+		else if (s.gradePercent >= 80.0f) {
+			s.overallGrade = 'B';
+		}
+		else if (s.gradePercent >= 70.0f) {
+			s.overallGrade = 'C';
+		}
+		else if (s.gradePercent >= 60.0f) {
+			s.overallGrade = 'D';
+		}
+		else {
+			s.overallGrade = 'F';
+		}
 	}
-	else if (score >= 80 && score < 90) {
-		letterGrade = 'B';
-	}
-	else if (score >= 70 && score < 80) {
-		letterGrade = 'C';
-	}
-	else if (score >= 60 && score < 70) {
-		letterGrade = 'D';
-	}
-	else
-		letterGrade = 'F';
-
-	return score;
 }

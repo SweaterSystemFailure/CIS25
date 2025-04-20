@@ -3,6 +3,7 @@
 #include "utilities.h"
 #include "containerFunctions.h"
 #include "menuFunctions.h"
+#include "containers.h"
 
 using namespace std;
 using namespace gradebook;

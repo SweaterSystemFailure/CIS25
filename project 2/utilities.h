@@ -7,9 +7,9 @@ namespace gradebook {
 
 	unsigned unsignedValidator(const std::string& prompt, unsigned min, unsigned max);
 	std::string stringValidator(const std::string& prompt);
-	bool userCheck();
+	bool userCheck(const string& prompt, const string& yesPrompt, const string& noPrompt);
 	char charValidator(const std::string& prompt, const std::vector<char>& validOptions);
 	float floatValidator(const std::string& prompt, float min, float max);
-	float scorer();
+	void scorer(globalStorage& storage, const vector<assignment>& assignments);
 
 }

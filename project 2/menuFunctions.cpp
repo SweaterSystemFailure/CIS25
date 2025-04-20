@@ -4,6 +4,7 @@
 #include "menuFunctions.h"
 #include "containerFunctions.h"
 #include "utilities.h"
+#include "containers.h"
 
 using namespace std;
 using namespace gradebook;
@@ -27,38 +28,53 @@ void welcome(globalStorage& storage) {
 	}
 }
 
-void mainMenu(globalStorage& globalStorage) {
+void mainMenu(globalStorage& storage) {
 	//menu options
 	cout << "Welcome to the main menu." << endl;
 	cout << "From here you can enter student information and grades." << endl;
 	cout << "Would you like to: " << endl;
 	cout << endl;
 	cout << "1. Enter new student information." << endl;
-	cout << "2. Create new assignments." << endl;
-	cout << "3. Enter grades for an existing assignments." << endl;
-	cout << "4. Generate an individual student report." << endl;
-	cout << "5. Exit program." << endl;
+	cout << "2. View all students." << endl;
+	cout << "3. Generate an individual student report." << endl;
+	cout << "4. Create new assignments." << endl;
+	cout << "5. View all assignements." << endl;
+	cout << "6. Enter grades for an existing assignments." << endl;
+	cout << "7. Export a report for your whole class to a .csv file" << endl;
+	cout << "8. Save your work." << endl;
+	cout << "9. Exit program." << endl;
 	cout << endl;
 
 	//selector for menu options
-	switch (unsignedValidator("Please enter the number of the option that you would like to select: [1-5] ", 1, 5)) {
+	switch (unsignedValidator("Please enter the number of the option that you would like to select: [1-9] ", 1, 9)) {
 	case 1:
-		addStudent(globalStorage&);
+		addStudent(storage);
 		break;
 	case 2:
-		newAssignment();
-		break;
+		printAllStudents(storage);
 	case 3:
-		enterGrade();
+		studentReport(storage);
 		break;
 	case 4:
-		studentReport();
+		addAssignment(storage);
 		break;
 	case 5:
+		printAssignments(storage.assignments);
+		break;
+	case 6:
+		enterGrades(storage);
+		break;
+	case 7:
+		printCSV(storage);
+		break;
+	case 8:
+		save(storage);
+		break;
+	case 9:
 		return;
 	default:
 		cout << "Please select a valid option and try again." << endl;
-		return mainMenu();
+		return mainMenu(storage);
 		break;
 	}
 }
