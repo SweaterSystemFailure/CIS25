@@ -137,10 +137,10 @@ void scorer(globalStorage& storage, const vector<assignment>& assignments) {
 		}
 
 		//Letter grade calculator
-		if (s.gradePercent >= 90.0f) s.overallGrade = "A";
-		else if (s.gradePercent >= 80.0f) s.overallGrade = "B";
-		else if (s.gradePercent >= 70.0f) s.overallGrade = "C";
-		else if (s.gradePercent >= 60.0f) s.overallGrade = "D";
-		else s.overallGrade = "F";
+		if (s.gradePercent >= 90.0f) s.overallGrade = 'A';
+		else if (s.gradePercent >= 80.0f) s.overallGrade = 'B';
+		else if (s.gradePercent >= 70.0f) s.overallGrade = 'C';
+		else if (s.gradePercent >= 60.0f) s.overallGrade = 'D';
+		else s.overallGrade = 'F';
 	}
 }
