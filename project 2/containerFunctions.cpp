@@ -1,10 +1,13 @@
 #include <iostream>
-#include <string>
+#include <iomanip>
 #include <vector>
+#include <string>
+#include <map>
+#include "containers.h"
 #include "utilities.h"
 #include "containerFunctions.h"
 #include "menuFunctions.h"
-#include "containers.h"
+
 
 using namespace std;
 using namespace gradebook;
@@ -96,8 +99,7 @@ void enterGrades(globalStorage& storage) {
 	case 1: {
 		// Grade all assignments
 		for (const auto& assign : storage.assignments) {
-			float score = floatValidator("Enter score for \"" + assign.name + "\" (" + to_string(assign.pointsPossible) + " pts): ", 0.0f, assign.pointsPossible);
-			selectedStudent.assignmentScores[assign.name] = score;
+			float score = floatValidator("Enter score for \"" + selectedAssignment.name + "\" (" + to_string(selectedAssignment.pointsPossible) + " pts): ", 0.0f, selectedAssignment.pointsPossible);
 		}
 		cout << "All grades for " << selectedStudent.firstName << " " << selectedStudent.lastName << " have been recorded." << endl;
 		break;
@@ -110,7 +112,6 @@ void enterGrades(globalStorage& storage) {
 		}
 		unsigned assignmentChoice = unsignedValidator("Enter the number of the assignment: ", 1, storage.assignments.size());
 		assignment& selectedAssignment = storage.assignments[assignmentChoice - 1];
-
 		float score = floatValidator("Enter score for \" + selectedAssignment.name + "\" (" + to_string(selectedAssignment.pointsPossible) + " pts): ", 0.0f, selectedAssignment.pointsPossible);
 		selectedStudent.assignmentScores[selectedAssignment.name] = score;
 
@@ -208,8 +209,8 @@ void studentReport(globalStorage& storage) {
 
 		cout << endl;
 		cout << setfill('*') << setw(50) << "*" << endl;
-		cout << setw(40) << left << "Overall Score: " << fixed << setprecision(2) << selected.totalScore << "%" << endl;
-		cout << setw(40) << left << "Letter Grade: " << selected.letterGrade << endl;
+		cout << setw(40) << left << "Overall Score: " << fixed << setprecision(2) << selected.gradePercent << "%" << endl;
+		cout << setw(40) << left << "Letter Grade: " << selected.overallGrade << endl;
 		cout << setfill('*') << setw(50) << "*" << endl;
 	}
 	else {

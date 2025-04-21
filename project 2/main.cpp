@@ -1,16 +1,21 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
-#include "utilities.h"
-#include "containerFunctions.h"
-#include "menuFunctions.h"
+#include <string>
+#include <map>
 #include "containers.h"
+#include "containerFunctions.h"
+#include "utilities.h"
+#include "menuFunctions.h"
 
 using namespace std;
 using namespace gradebook;
 
 int main(){
-welcome(globalStorage&);
-mainMenu(globalStorage&);
+globalStorage storage;
+
+welcome(storage);
+mainMenu(storage);
 
 return 0;
 }

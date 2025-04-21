@@ -1,12 +1,12 @@
 #include <iostream>
-#include <string>
+#include <iomanip>
 #include <vector>
+#include <string>
 #include <map>
+#include "containers.h"
 #include "utilities.h"
 #include "containerFunctions.h"
 #include "menuFunctions.h"
-#include "containers.h"
-
 
 using namespace std;
 using namespace gradebook;
@@ -126,7 +126,9 @@ void scorer(globalStorage& storage, const vector<assignment>& assignments) {
 		//Points possible and scored calculators
 		for (const auto& assign : assignments) {
 			totalPointsPossible += assign.pointsPossible;
-			totalPointsScored += assign.pointsPossible; 
+			if (s.assignmentScores.count(assign.name)) {
+				totalPointsScored += s.assignmentScores.at(assign.name);
+			}
 		}
 
 		//Percentage calculator
@@ -135,20 +137,10 @@ void scorer(globalStorage& storage, const vector<assignment>& assignments) {
 		}
 
 		//Letter grade calculator
-		if (s.gradePercent >= 90.0f) {
-			s.overallGrade = 'A';
-		}
-		else if (s.gradePercent >= 80.0f) {
-			s.overallGrade = 'B';
-		}
-		else if (s.gradePercent >= 70.0f) {
-			s.overallGrade = 'C';
-		}
-		else if (s.gradePercent >= 60.0f) {
-			s.overallGrade = 'D';
-		}
-		else {
-			s.overallGrade = 'F';
-		}
+		if (s.gradePercent >= 90.0f) s.overallGrade = "A";
+		else if (s.gradePercent >= 80.0f) s.overallGrade = "B";
+		else if (s.gradePercent >= 70.0f) s.overallGrade = "C";
+		else if (s.gradePercent >= 60.0f) s.overallGrade = "D";
+		else s.overallGrade = "F";
 	}
 }

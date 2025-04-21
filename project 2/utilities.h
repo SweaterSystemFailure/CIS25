@@ -1,8 +1,13 @@
 #pragma once
 #include <iostream>
-#include <string>
+#include <iomanip>
 #include <vector>
+#include <string>
+#include <map>
+#include "containers.h"
 
+
+using namespace std;
 namespace gradebook {
 
 	unsigned unsignedValidator(const std::string& prompt, unsigned min, unsigned max);

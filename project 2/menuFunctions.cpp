@@ -1,10 +1,13 @@
 #include <iostream>
-#include <string>
+#include <iomanip>
 #include <vector>
-#include "menuFunctions.h"
-#include "containerFunctions.h"
-#include "utilities.h"
+#include <string>
+#include <map>
 #include "containers.h"
+#include "utilities.h"
+#include "containerFunctions.h"
+#include "menuFunctions.h"
+
 
 using namespace std;
 using namespace gradebook;
@@ -52,8 +55,9 @@ void mainMenu(globalStorage& storage) {
 		break;
 	case 2:
 		printAllStudents(storage);
+		break;
 	case 3:
-		studentReport(storage);
+		printStudent(storage);
 		break;
 	case 4:
 		addAssignment(storage);

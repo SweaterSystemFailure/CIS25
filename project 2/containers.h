@@ -1,7 +1,11 @@
 #pragma once
-#include <string>
+#include <iostream>
+#include <iomanip>
 #include <vector>
+#include <string>
 #include <map>
+
+using namespace std;
 
 namespace gradebook {
 	struct classroom {
@@ -9,8 +13,6 @@ namespace gradebook {
 		std::string firstName;
 		std::string lastName;
 		unsigned gradeLevel;
-
-		static classroom createClassroom();
 	};
 
 	struct student {
